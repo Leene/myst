@@ -16,21 +16,22 @@ export default function App() {
   };
 
   return (
-    <Wrapper>
+    <>
       <Header>
         <H1>Begrüßung</H1>
       </Header>
-
-      <div>
-        <TileList />
-      </div>
-    </Wrapper>
+      <Wrapper>
+        <div>
+          <TileList />
+        </div>
+      </Wrapper>
+    </>
   );
 }
 
 const Header = styled.div`
-  height: 200px;
-  background-color: lightblue;
+  height: 100px;
+  background-color: rgb(73, 55, 91);
   margin-top: 0;
   padding: 0;
 `;
@@ -40,8 +41,9 @@ const H1 = styled.h1`
   text-align: center;
 `;
 const Wrapper = styled.div`
-  height: 100%;
-  //background-color: green;
-  margin: 0;
-  padding: 0;
+  display: flex;
+  align-items: center;
+  height: 90vh;
+  //background-color: white;
+  padding: 20px;
 `;
