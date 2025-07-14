@@ -14,9 +14,7 @@ export function Tile({ tile }: TileProps) {
           <IMG src={tile.img} />
         </PicDiv>
         <PDiv>
-          <P>
-            {tile.tab} <br /> {tile.title}
-          </P>
+          <P>{tile.title}</P>
         </PDiv>
       </TileStyle>
     </a>
@@ -31,31 +29,35 @@ const IMG = styled.img`
 const PicDiv = styled.div`
   display: flex;
   justify-content: center;
-  width: 200px;
+  width: 140px;
   height: 100px;
 `;
 const PDiv = styled.div`
   background-color: rgb(102, 82, 121);
-  width: 250px;
   margin: 0 -20px -10px -20px;
   padding: 10px 0;
-  border-bottom-left-radius: 5px;
-  border-bottom-right-radius: 5px;
-  box-shadow: -2px -2px 20px 2px rgba(0, 0, 0, 0.3);
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  box-shadow: inset -5px -5px 10px 3px rgba(83, 8, 68, 0.4),
+    -2px -2px 20px 2px rgba(0, 0, 0, 0.3);
 `;
 const P = styled.p`
-  margin: 0;
+  margin: 0 20px;
   padding: 0;
+`;
+const Div = styled.div`
+  box-shadow: ;
 `;
 
 const TileStyle = styled.div`
-  background-color: #444;
-  border: 2px solid #222;
-  box-shadow: -5px -5px 10px 3px #111;
+  background-color: rgba(255, 255, 255, 0.3);
+  //border: 2px solid #222;
+  box-shadow: inset -5px -5px 10px 3px rgba(255, 255, 255, 0.6),
+    -5px -5px 10px 3px rgba(68, 58, 45, 0.5);
   color: white;
   padding: 10px 20px;
   margin: 10px;
-  border-radius: 5px;
+  border-radius: 10px;
 
   &:hover {
     box-shadow: inset -2px -2px 8px 1px #111;

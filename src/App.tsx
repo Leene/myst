@@ -6,44 +6,52 @@ import type { LinkTile } from "./types/LinkTile";
 import { TileList } from "./components/TileList";
 
 export default function App() {
-  const [count, setCount] = useState(0);
-
-  const demoTile: LinkTile = {
-    id: "1",
-    tab: "Start",
-    title: "YouTube",
-    url: "https://youtube.com",
-  };
+  const allCategories = ["Start", "PDF", "Musik"];
 
   return (
     <>
-      <Header>
-        <H1>Begrüßung</H1>
-      </Header>
       <Wrapper>
-        <div>
-          <TileList />
-        </div>
+        {allCategories.map((category, index) => (
+          <Div>
+            <H2>{category}</H2>
+            <TileList key={index} category={category} />
+          </Div>
+        ))}
       </Wrapper>
+      <H1>Hi, fleißiges Bienchen! :-D</H1>
     </>
   );
 }
 
 const Header = styled.div`
   height: 100px;
-  background-color: rgb(73, 55, 91);
+  width: 100vw;
+  background-color: rgba(255, 255, 255, 0.3);
   margin-top: 0;
   padding: 0;
 `;
 const H1 = styled.h1`
   margin-top: 0;
+  padding: 20px 0 0 0;
+  text-align: center;
+  position: fixed;
+  bottom: 0px;
+  right: 3%;
+`;
+const H2 = styled.h2`
+  margin-top: 0;
   padding: 0;
   text-align: center;
+  font-color: orange;
 `;
 const Wrapper = styled.div`
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   height: 90vh;
-  //background-color: white;
   padding: 20px;
+`;
+const Div = styled.div`
+  &:last-child > div {
+    border: none;
+  }
 `;
