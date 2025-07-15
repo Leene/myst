@@ -1,12 +1,14 @@
 import { useState } from "react";
 import "./App.css";
 import styled from "styled-components";
+import _ from "lodash";
 import { Tile } from "./components/Tile";
 import type { LinkTile } from "./types/LinkTile";
 import { TileList } from "./components/TileList";
+import { defaultLinks } from "./data/defaultLinks";
 
 export default function App() {
-  const allCategories = ["Start", "PDF", "Musik"];
+  const allCategories = _.uniq(_.map(defaultLinks, "tab"));
 
   return (
     <>

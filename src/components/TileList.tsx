@@ -12,8 +12,7 @@ export function TileList(props) {
   const filtered_defaultLinks = _.filter(defaultLinks, { tab: category });
 
   console.log("hIER ", filtered_defaultLinks);
-  //console.log("Erster Titel:", filtered_defaultLinks[0]?.title);
-  //console.log("hIER " + defaultLinks[0].tab);
+
   return (
     <Div>
       {filtered_defaultLinks.map((link: LinkTile) => (
