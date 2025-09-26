@@ -5,6 +5,7 @@ import _ from "lodash";
 import { Tile } from "./components/Tile";
 import type { LinkTile } from "./types/LinkTile";
 import { TileList } from "./components/TileList";
+import { AddBtn } from "./components/AddBtn";
 import { defaultLinks } from "./data/defaultLinks";
 
 export default function App() {
@@ -13,6 +14,7 @@ export default function App() {
   return (
     <>
       <Wrapper>
+        <AddBtn color={"red"} />
         {allCategories.map((category, index) => (
           <Div>
             <H2>{category}</H2>

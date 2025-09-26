@@ -27,6 +27,7 @@ const Div = styled.div`
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
-  width: 30vw;
+  max-width: 30vw;
+  min-width: 17vw;
   border-right: 3px dotted white;
 `;
