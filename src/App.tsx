@@ -2,6 +2,7 @@ import { useState } from "react";
 import "./App.css";
 import styled from "styled-components";
 import _ from "lodash";
+import { HabitPlanner } from "./screens/HabitPlanner";
 import { Tile } from "./components/Tile";
 import type { LinkTile } from "./types/LinkTile";
 import { TileList } from "./components/TileList";
@@ -14,13 +15,14 @@ export default function App() {
   return (
     <>
       <Wrapper>
-        <AddBtn color={"red"} />
+        <HabitPlanner />
+        {/* <AddBtn color={"red"} />
         {allCategories.map((category, index) => (
           <Div>
             <H2>{category}</H2>
             <TileList key={index} category={category} />
           </Div>
-        ))}
+        ))} */}
       </Wrapper>
       <H1>Hi, fleißiges Bienchen! :-D</H1>
     </>

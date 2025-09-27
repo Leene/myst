@@ -14,3 +14,13 @@ body {
   margin: 0;
   padding: 0;
 }
+
+fcol {
+  display: flex;
+  flex-direction: column;
+}
+
+frow {
+  display: flex;
+  flex-direction: row;
+}
