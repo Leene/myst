@@ -15,16 +15,20 @@ export default function App() {
   return (
     <>
       <Wrapper>
-        <HabitPlanner />
-        {/* <AddBtn color={"red"} />
-        {allCategories.map((category, index) => (
-          <Div>
-            <H2>{category}</H2>
-            <TileList key={index} category={category} />
-          </Div>
-        ))} */}
+        <div className="fcol">
+          <HabitPlanner />
+
+          <AddBtn color={"red"} />
+          {allCategories.map((category, index) => (
+            <Div>
+              <H2>{category}</H2>
+              <TileList key={index} category={category} />
+            </Div>
+          ))}
+        </div>
       </Wrapper>
-      <H1>Hi, fleißiges Bienchen! :-D</H1>
+
+      <H1>Hi :-D</H1>
     </>
   );
 }
@@ -55,6 +59,7 @@ const Wrapper = styled.div`
   align-items: flex-start;
   height: 90vh;
   padding: 20px;
+  //y-overflow: scroll;
 `;
 const Div = styled.div`
   &:last-child > div {
