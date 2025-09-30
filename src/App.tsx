@@ -15,16 +15,18 @@ export default function App() {
   return (
     <>
       <Wrapper>
-        <div className="fcol">
+        <div>
           <HabitPlanner />
-
           <AddBtn color={"red"} />
-          {allCategories.map((category, index) => (
-            <Div>
-              <H2>{category}</H2>
-              <TileList key={index} category={category} />
-            </Div>
-          ))}
+
+          <DIV>
+            {allCategories.map((category, index) => (
+              <Div>
+                <H2>{category}</H2>
+                <TileList key={index} category={category} />
+              </Div>
+            ))}
+          </DIV>
         </div>
       </Wrapper>
 
@@ -32,6 +34,25 @@ export default function App() {
     </>
   );
 }
+
+const DIV = styled.div`
+  border: 1px solid blue;
+  //margin: 0 auto;
+  width: 95vw;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: no-wrap;
+  align-self: center;
+  // y-overflow: scroll;
+`;
+const DIV2 = styled.div`
+  border: 1px solid green;
+  // width: 30px;
+`;
+const DIV3 = styled.div`
+  border: 1px solid yellow;
+  // width: 30px;
+`;
 
 const Header = styled.div`
   height: 100px;
@@ -59,7 +80,7 @@ const Wrapper = styled.div`
   align-items: flex-start;
   height: 90vh;
   padding: 20px;
-  //y-overflow: scroll;
+  // y-overflow: scroll;
 `;
 const Div = styled.div`
   &:last-child > div {

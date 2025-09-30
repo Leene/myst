@@ -12,14 +12,14 @@ type AddBtn = {
 export function HabitPlanner() {
   const arryToCheckList = (array: HabitTask[]) => {
     return (
-      <ul>
+      <Ul>
         {array.map((arrayItem, index) => (
           <Li key={index}>
             <input type="checkbox" checked={arrayItem.done} />
             <label>{arrayItem.task}</label>
           </Li>
         ))}
-      </ul>
+      </Ul>
     );
   };
 
@@ -43,7 +43,8 @@ export function HabitPlanner() {
           <tr>
             <Td>1</Td>
             <Td>{arryToCheckList(habit_data[0].hour1)}</Td>
-            <Td rowSpan={2}>{arryToCheckList(habit_data[1].hour1)}</Td>
+            <Td>{arryToCheckList(habit_data[1].hour1)}</Td>
+            {/* <Td rowSpan={2}>{arryToCheckList(habit_data[1].hour1)}</Td> */}
             <Td>{arryToCheckList(habit_data[2].hour1)}</Td>
             <Td>{arryToCheckList(habit_data[3].hour1)}</Td>
             <Td>{arryToCheckList(habit_data[4].hour1)}</Td>
@@ -159,6 +160,9 @@ const Row = styled.div`
 const Tr_RSpan = styled.tr``;
 const H2 = styled.h2`
   color: white;
+`;
+const Ul = styled.ul`
+  margin: 5px 0;
 `;
 
 const Li = styled.li`

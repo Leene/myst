@@ -24,10 +24,10 @@ export function TileList(props) {
 
 const Div = styled.div`
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  flex-direction: column;
+  //flex-wrap: wrap;
   justify-content: center;
   max-width: 30vw;
-  min-width: 17vw;
+  min-width: 160px;
   border-right: 3px dotted white;
 `;
