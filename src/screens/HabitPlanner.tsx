@@ -3,14 +3,14 @@ import _ from "lodash";
 import styled from "styled-components";
 import "../App.css";
 import { habit_data } from "../data/habitPlannerData";
-import type { HabitTask } from "../types/HabitPlanner";
+import type { HabitTask, HabitDay } from "../types/HabitPlanner";
 
 type AddBtn = {
   color: string;
 };
 
 export function HabitPlanner() {
-  const arryToCheckList = (array: HabitTask[]) => {
+  const arrayToCheckList = (array: HabitTask[]) => {
     return (
       <Ul>
         {array.map((arrayItem, index) => (
@@ -23,7 +23,25 @@ export function HabitPlanner() {
     );
   };
 
+  const createTableRow = (
+    hourKey: Exclude<keyof HabitDay, "day">,
+    hourNumber: number
+  ) => {
+    return (
+      <tr>
+        <Td>{hourNumber}</Td>
+        {habit_data.map((day, index) => (
+          <Td key={index}>{arrayToCheckList(day[hourKey])}</Td>
+        ))}
+      </tr>
+    );
+  };
+
   function createTable() {
+    const allNamesOfTableRows = _.keys(habit_data[0]).filter((key) =>
+      key.startsWith("hour")
+    );
+
     const table = (
       <table>
         <thead>
@@ -38,99 +56,11 @@ export function HabitPlanner() {
             <th>{habit_data[6].day}</th>
           </tr>
         </thead>
-
         <tbody>
-          <tr>
-            <Td>1</Td>
-            <Td>{arryToCheckList(habit_data[0].hour1)}</Td>
-            <Td>{arryToCheckList(habit_data[1].hour1)}</Td>
-            {/* <Td rowSpan={2}>{arryToCheckList(habit_data[1].hour1)}</Td> */}
-            <Td>{arryToCheckList(habit_data[2].hour1)}</Td>
-            <Td>{arryToCheckList(habit_data[3].hour1)}</Td>
-            <Td>{arryToCheckList(habit_data[4].hour1)}</Td>
-            <Td>{arryToCheckList(habit_data[5].hour1)}</Td>
-            <Td>{arryToCheckList(habit_data[6].hour1)}</Td>
-          </tr>
-          <tr>
-            <Td>2</Td>
-            <Td>{arryToCheckList(habit_data[0].hour2)}</Td>
-            <Td>{arryToCheckList(habit_data[1].hour2)}</Td>
-            <Td>{arryToCheckList(habit_data[2].hour2)}</Td>
-            <Td>{arryToCheckList(habit_data[3].hour2)}</Td>
-            <Td>{arryToCheckList(habit_data[4].hour2)}</Td>
-            <Td>{arryToCheckList(habit_data[5].hour2)}</Td>
-            <Td>{arryToCheckList(habit_data[6].hour2)}</Td>
-          </tr>
-          <tr>
-            <Td>3</Td>
-            <Td>{arryToCheckList(habit_data[0].hour3)}</Td>
-            <Td>{arryToCheckList(habit_data[1].hour3)}</Td>
-            <Td>{arryToCheckList(habit_data[2].hour3)}</Td>
-            <Td>{arryToCheckList(habit_data[3].hour3)}</Td>
-            <Td>{arryToCheckList(habit_data[4].hour3)}</Td>
-            <Td>{arryToCheckList(habit_data[5].hour3)}</Td>
-            <Td>{arryToCheckList(habit_data[6].hour3)}</Td>
-          </tr>
-          <tr>
-            <Td>4</Td>
-            <Td>{arryToCheckList(habit_data[0].hour4)}</Td>
-            <Td>{arryToCheckList(habit_data[1].hour4)}</Td>
-            <Td>{arryToCheckList(habit_data[2].hour4)}</Td>
-            <Td>{arryToCheckList(habit_data[3].hour4)}</Td>
-            <Td>{arryToCheckList(habit_data[4].hour4)}</Td>
-            <Td>{arryToCheckList(habit_data[5].hour4)}</Td>
-            <Td>{arryToCheckList(habit_data[6].hour4)}</Td>
-          </tr>
-          <tr>
-            <Td>5</Td>
-            <Td>{arryToCheckList(habit_data[0].hour5)}</Td>
-            <Td>{arryToCheckList(habit_data[1].hour5)}</Td>
-            <Td>{arryToCheckList(habit_data[2].hour5)}</Td>
-            <Td>{arryToCheckList(habit_data[3].hour5)}</Td>
-            <Td>{arryToCheckList(habit_data[4].hour5)}</Td>
-            <Td>{arryToCheckList(habit_data[5].hour5)}</Td>
-            <Td>{arryToCheckList(habit_data[6].hour5)}</Td>
-          </tr>
-          <tr>
-            <Td>6</Td>
-            <Td>{arryToCheckList(habit_data[0].hour6)}</Td>
-            <Td>{arryToCheckList(habit_data[1].hour6)}</Td>
-            <Td>{arryToCheckList(habit_data[2].hour6)}</Td>
-            <Td>{arryToCheckList(habit_data[3].hour6)}</Td>
-            <Td>{arryToCheckList(habit_data[4].hour6)}</Td>
-            <Td>{arryToCheckList(habit_data[5].hour6)}</Td>
-            <Td>{arryToCheckList(habit_data[6].hour6)}</Td>
-          </tr>
-          <tr>
-            <Td>7</Td>
-            <Td>{arryToCheckList(habit_data[0].hour7)}</Td>
-            <Td>{arryToCheckList(habit_data[1].hour7)}</Td>
-            <Td>{arryToCheckList(habit_data[2].hour7)}</Td>
-            <Td>{arryToCheckList(habit_data[3].hour7)}</Td>
-            <Td>{arryToCheckList(habit_data[4].hour7)}</Td>
-            <Td>{arryToCheckList(habit_data[5].hour7)}</Td>
-            <Td>{arryToCheckList(habit_data[6].hour7)}</Td>
-          </tr>
-          <tr>
-            <Td>8</Td>
-            <Td>{arryToCheckList(habit_data[0].hour8)}</Td>
-            <Td>{arryToCheckList(habit_data[1].hour8)}</Td>
-            <Td>{arryToCheckList(habit_data[2].hour8)}</Td>
-            <Td>{arryToCheckList(habit_data[3].hour8)}</Td>
-            <Td>{arryToCheckList(habit_data[4].hour8)}</Td>
-            <Td>{arryToCheckList(habit_data[5].hour8)}</Td>
-            <Td>{arryToCheckList(habit_data[6].hour8)}</Td>
-          </tr>
-          <tr>
-            <Td>9</Td>
-            <Td>{arryToCheckList(habit_data[0].hour9)}</Td>
-            <Td>{arryToCheckList(habit_data[1].hour9)}</Td>
-            <Td>{arryToCheckList(habit_data[2].hour9)}</Td>
-            <Td>{arryToCheckList(habit_data[3].hour9)}</Td>
-            <Td>{arryToCheckList(habit_data[4].hour9)}</Td>
-            <Td>{arryToCheckList(habit_data[5].hour9)}</Td>
-            <Td>{arryToCheckList(habit_data[6].hour9)}</Td>
-          </tr>
+          {/* <Td rowSpan={2}>{arryToCheckList(habit_data[1].hour1)}</Td> */}
+          {allNamesOfTableRows.map((hourKey, index) => {
+            return createTableRow(hourKey as keyof HabitDay, index);
+          })}
         </tbody>
       </table>
     );
