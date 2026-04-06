@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import _ from "lodash";
 import styled from "styled-components";
 import "../App.css";
@@ -8,18 +8,28 @@ import type { HabitTask, HabitDay } from "../types/HabitPlanner";
 type AddBtn = {
   color: string;
 };
-
+//const [checkBoxState, setCheckBoxState] = useState();
 export function HabitPlanner() {
   const arrayToCheckList = (array: HabitTask[]) => {
-    return (
-      <Ul>
-        {array.map((arrayItem, index) => (
-          <Li key={index}>
-            <input type="checkbox" checked={arrayItem.done} />
-            <label>{arrayItem.task}</label>
-          </Li>
-        ))}
-      </Ul>
+    return (<>
+      <EditListForm>
+        <H6>Liste bearbeiten</H6>
+        <label>Punkt hinzufügen</label>
+        <InputNewListItem type="text" value="neue Aufgabe"/>
+        <input type="submit" value="Speichern"/>
+
+      </EditListForm>
+      <DivUl>
+        <Ul>
+          {array.map((arrayItem, index) => (
+            <Li key={index}>
+              <input type="checkbox" checked={arrayItem.done} />
+              <label>{arrayItem.task}</label>
+            </Li>
+          ))}
+        </Ul>
+      </DivUl>
+      </>
     );
   };
 
@@ -92,8 +102,21 @@ const H2 = styled.h2`
   color: white;
 `;
 const Ul = styled.ul`
+  border: 1px solid blue;
   margin: 5px 0;
 `;
+
+const DivUl = styled.div`
+border: 1px solid yellow;
+background-color: rgba(255, 255, 255, 0.3);
+
+  &:hover{
+    visibility:collapse;
+  
+  }
+`;
+
+
 
 const Li = styled.li`
   //border: 1px solid blue;
@@ -102,11 +125,29 @@ const Li = styled.li`
 `;
 
 const Td = styled.td`
-  background-color: rgba(255, 255, 255, 0.5);
-  color: black;
-  min-width: 150px;
-  &:first-child {
-    min-width: 30px;
-    text-align: center;
-  }
+background-color: rgba(255, 255, 255, 0.5);
+color: black;
+min-width: 150px;
+&:first-child {
+  min-width: 30px;
+  text-align: center;
+}
 `;
+
+
+const EditListForm = styled.form`
+border: 1px solid red;
+&:hover{
+  background-color: rgba(150, 150, 255, 0.8);
+}`;
+
+const H6 = styled.h6`
+  padding:0;
+  margin:0;
+  font-size:10pt;
+}`;
+
+const InputNewListItem = styled.input`
+background-color: rgba(150, 250, 150, 0.8);
+}`;
+
