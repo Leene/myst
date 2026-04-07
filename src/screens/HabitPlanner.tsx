@@ -11,37 +11,47 @@ type AddBtn = {
 //const [checkBoxState, setCheckBoxState] = useState();
 export function HabitPlanner() {
   const arrayToCheckList = (array: HabitTask[]) => {
-    return (<>
-      <EditListForm>
-        <H6>Liste bearbeiten</H6>
-        <label>Punkt hinzufügen</label>
-        <InputNewListItem type="text" value="neue Aufgabe"/>
-        <input type="submit" value="Speichern"/>
-
-      </EditListForm>
-      <DivUl>
-        <Ul>
-          {array.map((arrayItem, index) => (
-            <Li key={index}>
-              <input type="checkbox" checked={arrayItem.done} />
-              <label>{arrayItem.task}</label>
-            </Li>
-          ))}
-        </Ul>
-      </DivUl>
+    return (
+      <>
+        <EditListForm>
+          <H6>Liste bearbeiten</H6>
+          <label>Punkt hinzufügen</label>
+          <InputNewListItem type="text" value="neue Aufgabe" />
+          <input type="submit" value="Speichern" />
+        </EditListForm>
+        <TdDiv>
+          <DivUl>
+            <Ul>
+              {array.map((arrayItem, index) => (
+                <Li key={index}>
+                  <input type="checkbox" checked={arrayItem.done} />
+                  <label>{arrayItem.task}</label>
+                </Li>
+              ))}
+            </Ul>
+          </DivUl>
+          <EditIconDiv>
+            <IconImg
+              width="24"
+              height="24"
+              src="https://img.icons8.com/android/24/edit.png"
+              alt="edit"
+            />
+          </EditIconDiv>
+        </TdDiv>
       </>
     );
   };
 
   const createTableRow = (
     hourKey: Exclude<keyof HabitDay, "day">,
-    hourNumber: number
+    hourNumber: number,
   ) => {
     return (
       <tr>
         <Td>{hourNumber}</Td>
         {habit_data.map((day, index) => (
-          <Td key={index}>{arrayToCheckList(day[hourKey])}</Td>
+          <TdList key={index}>{arrayToCheckList(day[hourKey])}</TdList>
         ))}
       </tr>
     );
@@ -49,7 +59,7 @@ export function HabitPlanner() {
 
   function createTable() {
     const allNamesOfTableRows = _.keys(habit_data[0]).filter((key) =>
-      key.startsWith("hour")
+      key.startsWith("hour"),
     );
 
     const table = (
@@ -102,21 +112,17 @@ const H2 = styled.h2`
   color: white;
 `;
 const Ul = styled.ul`
-  border: 1px solid blue;
   margin: 5px 0;
 `;
 
 const DivUl = styled.div`
-border: 1px solid yellow;
-background-color: rgba(255, 255, 255, 0.3);
+  //border: 1px solid yellow;
+  //background-color: rgba(255, 255, 255, 0.3);
 
-  &:hover{
-    visibility:collapse;
-  
+  &:hover {
+    visibility: collapse;
   }
 `;
-
-
 
 const Li = styled.li`
   //border: 1px solid blue;
@@ -124,22 +130,62 @@ const Li = styled.li`
   margin-left: -40px;
 `;
 
-const Td = styled.td`
-background-color: rgba(255, 255, 255, 0.5);
-color: black;
-min-width: 150px;
-&:first-child {
-  min-width: 30px;
-  text-align: center;
-}
+const TdDiv = styled.td`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 `;
 
+const Td = styled.td`
+  background-color: rgba(255, 255, 255, 0.6);
+  color: black;
+  min-width: 150px;
+  &:first-child {
+    min-width: 30px;
+    text-align: center;
+  }
+`;
+
+const TdList = styled.td`
+  border: 1px solid green;
+
+  position: relative;
+  padding-left: 5px;
+  background-color: rgba(255, 255, 255, 0.7);
+  color: black;
+  min-width: 160px;
+`;
 
 const EditListForm = styled.form`
-border: 1px solid red;
-&:hover{
-  background-color: rgba(150, 150, 255, 0.8);
-}`;
+  position: absolute;
+  z-index: 1;
+  border: 1px solid red;
+  opacity: 0;
+  &:hover {
+    opacity: 1;
+    background-color: rgb(141, 168, 219);
+  }
+`;
+
+const EditIconDiv = styled.div`
+  text-align: center;
+
+  background-color: rgb(60, 116, 76);
+  width: 36px;
+  height: 36px;
+  border-bottom-left-radius: 25px;
+  border-top-left-radius: 25px;
+  border-bottom-right-radius: 25px;
+  //box-shadow: -2px 2px 7px rgba(37, 50, 68, 0.4);
+`;
+
+const IconImg = styled.img`
+  filter: invert(100%);
+  //filter: opacity(60%);
+  width: 20px;
+  height: auto;
+  margin: 6px -3px 0 0;
+`;
 
 const H6 = styled.h6`
   padding:0;
@@ -150,4 +196,3 @@ const H6 = styled.h6`
 const InputNewListItem = styled.input`
 background-color: rgba(150, 250, 150, 0.8);
 }`;
-
